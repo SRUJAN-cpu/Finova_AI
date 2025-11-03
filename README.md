@@ -75,7 +75,33 @@ The backend is hosted on AWS:
 - **API Gateway**: REST API for presigned URL generation and result polling
 - **IAM**: Secure role-based access control
 
-## 📊 Supported File Types
+## �️ Backend Overview
+
+The backend for Finova AI is fully serverless and cloud-native, built to support scalable and secure financial data analytics:
+
+- **AWS S3**: Stores all uploaded user files and processed analytics results using efficient, object-based cloud storage.
+
+- **AWS Lambda (Python)**: Serverless functions automatically triggered by S3 events to perform data validation, cleaning, financial analytics, and anomaly detection (using libraries like pandas and boto3).
+
+- **AWS API Gateway**: Exposes secure REST endpoints for the frontend app to request presigned upload URLs, trigger analysis, and poll for result status.
+
+- **IAM Roles & Policies**: Ensures strict access control for Lambda, S3, and API Gateway interaction.
+
+- **Extensibility**: The pipeline is compatible with additional AWS analytics/ML services (Amazon Bedrock, SageMaker, etc.) for future features.
+
+- **Monitoring**: AWS CloudWatch is used for logging, metrics, and health checks across all backend components.
+
+### Backend Architecture Flow
+
+1. **Presigned URL Generation**: API Gateway endpoint issues S3 presigned URL for clients to upload files directly (no server relay needed).
+
+2. **File Upload & Processing**: Upload to S3 triggers a Lambda function, which validates, parses, and analyzes the data, flagging anomalies and producing summaries.
+
+3. **Result Polling**: Frontend polls API Gateway endpoint; Lambda checks S3 for result completion and returns structured analytics and AI-driven suggestions.
+
+Tech stack: Python (lambda code), pandas (data analysis), boto3 (AWS operations), AWS S3, AWS Lambda, AWS API Gateway, IAM.
+
+## �📊 Supported File Types
 
 - CSV (`.csv`)
 - Excel (`.xlsx`, `.xls`)
@@ -141,18 +167,6 @@ const API_PREFIX = import.meta.env.VITE_API_GATEWAY_URL;
 const GETRESULT_URL = import.meta.env.VITE_GETRESULT_URL;
 ```
 
-## 📝 License
-
-See [LICENSE](../LICENSE) file for details.
-
 ## 🤝 Contributing
 
 This is a production frontend for an AWS-hosted financial analytics system.
-
-## 📧 Support
-
-For issues or questions, please open an issue in the repository.
-
----
-
-**Built with React + Vite | Powered by AWS**
