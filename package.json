@@ -1,0 +1,27 @@
+{
+  "name": "finova-ai-frontend",
+  "version": "1.0.0",
+  "description": "Financial analytics dashboard for MSME companies - powered by AWS cloud processing",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview",
+    "install-deps": "cd frontend && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SRUJAN-cpu/Finova_AI.git"
+  },
+  "keywords": [
+    "financial-analytics",
+    "msme",
+    "react",
+    "aws",
+    "s3",
+    "lambda",
+    "dashboard"
+  ],
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE"
+}
